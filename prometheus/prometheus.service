@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus Monitoring System
+After=network.target
+
+[Service]
+User=prometheus
+Group=prometheus
+ExecStart=/opt/linux-monitoring/prometheus/prometheus \
+    --config.file=/opt/linux-monitoring/prometheus/prometheus.yml \
+    --storage.tsdb.path=/opt/linux-monitoring/prometheus/data
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
